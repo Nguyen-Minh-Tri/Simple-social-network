@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="IT">
+    <meta name="description" content="IT Platform"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b6fc7b701c.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <link href="css/mainpage.css" rel="stylesheet" type="text/css" />
+    <title>LinkedIn Platform</title>
+</head>
+
+<body>
+
+    <div id="overlay">
+        <form action="">
+            <div class="input-form">
+                <p>Title</p>
+                <input type="text" name="title" placeholder="#" id="sttt">
+            </div>
+            <div class="input-form">
+                <p>Subject</p>
+                <textarea type="text" id="stsubject" name="content" placeholder="Write something.."></textarea>
+            </div>
+            <div class="clear"></div>
+            <div>
+                <button id="submit-button">Post</button>
+            </div>
+        </form>
+    </div>
+
+    <header>
+        <div id="home-icon">
+            <a href="#"><i class="fas fa-home icon"></i></a>
+        </div>
+        <div class="container">
+            <i class="fas fa-search searchicon"></i>
+            <input type="text" id="searchbar" name="searchbar" placeholder="Search">
+        </div>
+        <div class="tt">
+        	<h1><span class="highlight">LinkedIn</span> Platform</h1>
+        </div>
+    </header>
+
+    <section id="intro">
+        <div class="container">
+            <div class="box">
+                <h3><span id="highlight1">Trump</span> <span id="highlight2">invited you to connect</span></h3>
+                <img src="pic/donald_trump.jpg" alt="Donald Trump" width="75" height="75" id="donald-trump">
+                <p id="highlight3">Donald Trump</p>
+                <p class="highlight4">President of the United States</p>
+            </div>
+            <div class="box">
+                <i class="far fa-bell box-icon"></i>
+                <h3 id="tt2">Get notified about new jobs</h3>
+                <p class="highlight4">Over 20 million job postings available.</p>
+                <p class="highlight4">Don't miss out.</p>
+            </div>
+            <div class="box">
+                <i class="fas fa-hospital-user box-icon"></i>
+                <h3 id="tt2">Follow pages</h3>
+                <p class="highlight4">Stay up to date with the latest industry news and engage with brands on LinkedIn.</p>
+            </div>
+        </div>
+    </section>
+
+    <aside id="profile-box">
+        <div class="container">
+            <div>
+                <img src="pic/top.jpg" alt="Top" width="250" height="50" id="top-background">
+            </div>
+            <div id="profile">
+                <img src="pic/profile-pic.png" alt="Profile" width="75" height="75" id="profile-pic">
+            </div>
+            <div id="welcome">
+                <p>Welcome, Trần Dần!</p>
+                <a href="#">Update your profile</a>
+            </div>
+        </div>
+    </aside>
+
+    <section id="post-status">
+        <div class="container">
+            <div class="status-box">
+                <a href="#" onclick="on()"><i class="far fa-edit"> Start a post</i></a>
+            </div>
+            <div class="icon">
+                <a href="#"><i class="fas fa-camera"></i></a>
+            </div>
+            <div class="icon">
+                <a href="#"><i class="fas fa-video"></i>
+            </div></a>
+            <div id="right-icon">
+                <a href="#"><i class="far fa-file-alt"></i></a>
+            </div>
+            <div id="message"><span class="highlight">Write an article</span> on LinkedIn</div>
+        </div>
+        <div class="container-status">
+            <div class="user-status"></div>
+        </div>
+    </section>
+
+    <aside id="suggestion">
+        <div class="container">
+            <header>
+                <p>Add to your feed</p>
+                <i class="fas fa-info-circle"></i>
+            </header>
+            <div class="employer">
+                <img src="pic/google-icon.png" alt="Google" width="50" height="50" id="google-icon">
+                <div class="description">
+                    <h1>Google</h1>
+                    <p>Company</p>
+                </div>
+                <button type="submit" value="Submit">Follow</button>
+            </div>
+
+            <div class="clear">
+            </div>
+
+            <div class="employer">
+                <img src="pic/facebook-icon.png" alt="Facebook" width="30" height="30" id="facebook-icon">
+                <div class="description">
+                    <h1>Facebook</h1>
+                    <p>Company</p>
+                </div>
+                <button type="submit" value="Submit">Follow</button>
+            </div>
+
+            <div class="clear">
+            </div>
+
+            <div class="employer">
+                <img src="pic/youtube-icon.png" alt="Youtube" width="50" height="50" id="youtube-icon">
+                <div class="description">
+                    <h1>Google</h1>
+                    <p>Company</p>
+                </div>
+                <button type="submit" value="Submit">Follow</button>
+            </div>
+
+            <div class="clear"></div>
+
+            <footer>
+                <a href="#">View all recommendations</a>
+            </footer>
+        </div>
+    </aside>
+
+    <div class="clear"></div>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="IT">
+    <meta name="description" content="IT Platform"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b6fc7b701c.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <link href="css/mainpage.css" rel="stylesheet" type="text/css" />
+    <script src="js/main.js"></script>
+    <title>LinkedIn Platform</title>
+
+    <!-- for sign up - start hear -->
+    <style>.modal {
+        display: none; 
+        position: fixed; 
+        z-index: 8888; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.5); 
+        }
+        
+        .modal-content {
+        min-width: 40%;
+        max-width: 43%;
+        background-color: rgba(0,0,0,0);
+        margin: 10vh auto; 
+        padding: 0;
+        border: 0px solid #888;
+        }
+        
+        h2, p {
+        margin: 0 0 20px;
+        font-weight: 400;
+        color: rgb(0, 0, 0);
+        }
+        h2{
+            text-align: center;
+        }
+        form {
+        padding: 25px;
+        margin: 25px;
+        box-shadow: 0 0px 2px #f5f5f5; 
+        background: rgb(255, 255, 255); 
+        }
+        input, textarea {
+        width: calc(100% - 18px);
+        padding: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #1c87c9;
+        outline: none;
+        }
+
+        .button{
+        color: white;
+        font-weight: 700;
+        margin: auto;
+        border-radius: 5px;
+        border-color: #f5f5f5;
+        float: left;
+        position:absolute;
+        transition: .5s ease;
+        top: 2%;
+        left: 85%;
+        z-index: 99999999;
+        }
+
+        .contact-form button {
+        width: 97%;
+        padding: 10px;
+        border: none;
+        background: #1c87c9; 
+        font-size: 16px;
+        font-weight: 400;
+        color: #fff;
+        }
+        button:hover {
+        background: #5cbefc;
+        }    
+        /* close button still look weird */
+        .close {
+        color: rgb(255, 255, 255);
+        float: right;
+        font-size: 35px;
+        font-weight: bolder;
+        }
+        .close:hover,
+        .close:focus {
+        color: orangered;
+        text-decoration: none;
+        box-shadow: 0 0px 1px #c7c7c7;
+        font-size: 42px;
+        opacity: 0.5;
+        position: initial;
+        cursor: pointer;
+        }
+        button.button {
+        background:none;
+        border-top:none;
+        outline: none;
+        border-right:none;
+        border-left:none;
+        border-bottom:#02274a 1px solid;
+        padding:0 0 3px 0;
+        font-size:16px;
+        cursor:pointer;
+        }
+        button.button:hover {
+        border-bottom:#a99567 1px solid;
+        color:#a99567;
+        }
+      </style>
+<!-- ended sign up -->
+</head>
+
+<body>
+
+    <div id="overlay">
+        <form>
+            <div class="input-form">
+                <p>Title</p>
+                <input type="text" name="Status Title" placeholder="#" id="sttt">
+            </div>
+            <div class="input-form">
+                <p>Subject</p>
+                <textarea id="stsubject" name="Status Subject" placeholder="Write something.."></textarea>
+            </div>
+            <div class="clear"></div>
+            <div>
+                <button type="submit" id="submit-button">Post</button>
+            </div>
+        </form>
+    </div>
+
+    <header>
+        <div id="home-icon">
+            <a href="#"><i class="fas fa-home icon"></i></a>
+        </div>
+        <div class="tt">
+            <h1><span class="highlight">LinkedIn</span> Platform</h1>
+        </div>
+    </header>
+      
+    <p>
+    <button class="button" data-modal="modalOne">Sign in</button>
+    </p>
+    <div id="modalOne" class="modal">
+    <div class="modal-content">
+        <div class="contact-form">
+        <a class="close">&times;</a>
+        <form action="../mainPage/main_page.html">
+            <h2>Wellcome</h2>
+            <div>
+            <input class="fname" type="email" name="email" placeholder="Enter your email">
+            <input type="password" name="name" placeholder="password">
+            </div>
+            <button type="submit" href="../mainPage/main_page.html">Sign in</button>
+        </form>
+        </div>
+    </div>
+    </div>
+    </div>
+    <script>
+    var modalBtns = [...document.querySelectorAll(".button")];
+    modalBtns.forEach(function(btn){
+        btn.onclick = function() {
+        var modal = btn.getAttribute('data-modal');
+        document.getElementById(modal).style.display = "block";
+        }
+    });
+    
+    var closeBtns = [...document.querySelectorAll(".close")];
+    closeBtns.forEach(function(btn){
+        btn.onclick = function() {
+        var modal = btn.closest('.modal');
+        modal.style.display = "none";
+        }
+    });
+    
+    window.onclick = function(event) {
+        if (event.target.className === "modal") {
+        event.target.style.display = "none";
+        }
+    }
+    </script>
+
+    <section id="intro">
+        <div class="container">
+            <div class="box">
+                <h3><span id="highlight1"></span>Popular KOL <span id="highlight2"></span></h3>
+                <img src="pic/donald_trump.jpg" alt="Donald Trump" width="75" height="75" id="donald-trump">
+                <p id="highlight3">Donald Trump</p>
+                <p class="highlight4">President of the United States</p>
+            </div>
+            <div class="box">
+                <i class="far fa-bell box-icon"></i>
+                <h3 id="tt2">Get notified about new jobs</h3>
+                <p class="highlight4">Over 20 million job postings available.</p>
+                <p class="highlight4">Don't miss out.</p>
+            </div>
+            <div class="box">
+                <i class="fas fa-hospital-user box-icon"></i>
+                <h3 id="tt2">Follow pages</h3>
+                <p class="highlight4">Stay up to date with the latest industry news and engage with brands on LinkedIn platform.</p>
+            </div>
+        </div>
+    </section>
+
+    <aside id="profile-box">
+        <div class="container">
+            <div>
+                <img src="pic/top.jpg" alt="Top" width="250" height="50" id="top-background">
+            </div>
+            <div id="profile">
+                <img src="pic/profile-pic.png" alt="Profile" width="75" height="75" id="profile-pic">
+            </div>
+            <div id="welcome">
+                <p>Welcome</p>
+                <a href="/">Sign In to update your interestd information and topic</a>
+            </div>
+        </div>
+    </aside>
+
+    <section id="post-status">
+        <div class="container">
+            <div class="status-box">
+                <a href="#" onclick="on()"><i class="far fa-edit"> Start a post</i></a>
+            </div>
+            <div class="icon">
+                <a href="#"><i class="fas fa-camera"></i></a>
+            </div>
+            <div class="icon">
+                <a href="#"><i class="fas fa-video"></i>
+            </div></a>
+            <div id="right-icon">
+                <a href="#"><i class="far fa-file-alt"></i></a>
+            </div>
+            <div id="message"><span class="highlight">Write an article</span> on LinkedIn</div>
+        </div>
+    </section>
+
+    <aside id="suggestion">
+        <div class="container">
+            <header>
+                <p>Add to your feed</p>
+                <i class="fas fa-info-circle"></i>
+            </header>
+            <div class="employer">
+                <img src="pic/google-icon.png" alt="Google" width="50" height="50" id="google-icon">
+                <div class="description">
+                    <h1>Google</h1>
+                    <p>Company</p>
+                </div>
+                <button type="submit" value="Submit">Follow</button>
+            </div>
+
+            <div class="clear">
+            </div>
+
+            <div class="employer">
+                <img src="pic/facebook-icon.png" alt="Facebook" width="30" height="30" id="facebook-icon">
+                <div class="description">
+                    <h1>Facebook</h1>
+                    <p>Company</p>
+                </div>
+                <button type="submit" value="Submit">Follow</button>
+            </div>
+
+            <div class="clear">
+            </div>
+
+            <div class="employer">
+                <img src="pic/youtube-icon.png" alt="Youtube" width="50" height="50" id="youtube-icon">
+                <div class="description">
+                    <h1>Google</h1>
+                    <p>Company</p>
+                </div>
+                <button type="submit" value="Submit">Follow</button>
+            </div>
+
+            <div class="clear"></div>
+
+            <footer>
+                <a href="#">View all recommendations</a>
+            </footer>
+        </div>
+    </aside>
+
+</body>
+</html>
