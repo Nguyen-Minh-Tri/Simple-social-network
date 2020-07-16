@@ -28,7 +28,7 @@ function on() {
 		}).then(response => response.json())
 			.then(createdPost => {
 				form.reset();
-				// listAllPosts();
+				listAllPosts();
 			});
 		
 	});
