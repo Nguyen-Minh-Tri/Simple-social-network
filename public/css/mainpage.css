@@ -341,9 +341,10 @@ header .highlight {
 	margin-bottom: 8px;
 }
 
-#edit-icon {
+.edit-icon {
 	float: right;
 	cursor: pointer;
+	border: none;
 }
 /* post status */
 

@@ -11,10 +11,12 @@ function on() {
 		const formData = new FormData(form);
 		const title = formData.get('title');
 		const content = formData.get('content');
+		var id = title + content;
 
 		const post = {
 			title,
-			content
+			content,
+			id
 		};
 		
 		fetch(API_URL, {
@@ -28,6 +30,7 @@ function on() {
 				form.reset();
 				// listAllPosts();
 			});
+		
 	});
 
 	const modal = document.getElementById('overlay');
@@ -68,22 +71,29 @@ function listAllPosts() {
 				img.src = "pic/profile-pic.png";
 				img.setAttribute("width", "50");
 				img.setAttribute("height", "50");
-				
 
-				div.innerHTML = '<i class="fas fa-edit" id="edit-icon" aria-hidden="true" onclick="editStatus()"></i>';
+				const button = document.createElement('button');
+				button.innerHTML = '<i class="fas fa-edit"  aria-hidden="true"></i>';
+				button.setAttribute('class', 'edit-icon');
+				button.setAttribute('id', post.id);
+				const id = button.id;
+				button.setAttribute('onclick', 'editStatus(id)');
+
+				div.appendChild(button);
 				div.appendChild(img);
 				div.appendChild(header);
 				div.appendChild(date);
                 div.appendChild(contents);
 				
 				newsElement.appendChild(div);
+
+				
             });
-        })
+		})
 }
 
 
-
-function editStatus() {
+function editStatus(id) {
 	const modal = document.getElementById('overlay');
 	const b1 = document.getElementById('submit-button');
 	const edit = document.getElementById('edit-icon');
@@ -96,12 +106,12 @@ function editStatus() {
 
 		const formData = new FormData(form);
 		const title = formData.get('title');
-		const content = formData.get('content');
-		
+		const content = formData.get('content'); 
 
 		const editedPost = {
 			title,
-			content
+			content,
+			id
 		};
 
 		fetch('http://localhost:4000/edit', {
@@ -125,7 +135,7 @@ function editStatus() {
 			modal.style.display = "none";
 		}
 	}
-}
+};
 
 
 

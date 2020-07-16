@@ -12,8 +12,6 @@ const app = express();
 const url = 'mongodb://localhost:27017';
 const dbName = 'poststatus';
 
-mongoose.connect('mongodb://localhost/poststatus', {useNewUrlParser: true});
-
 const db = monk('localhost/poststatus');
 const posts = db.get('posts');
 const filter = new Filter();
@@ -55,6 +53,7 @@ app.post('/posts', (req, res) => {
         const post = {
             title: filter.clean(req.body.title.toString()),
             content: filter.clean(req.body.content.toString()),
+            id: req.body.id,
             created: new Date()
         };
         
@@ -75,10 +74,9 @@ app.post('/edit', (req, res) => {
     MongoClient.connect(url, function(err, client) {
         const db = client.db(dbName);
         const collection = db.collection('posts');
-
-        collection.updateOne({ title: req.body.postId }
-            , { $set: { content : "OK" } }, function(err, result) {
-            console.log("OK");
+        
+        collection.updateOne({ id: req.body.id }
+            , { $set: { title: req.body.title, content : req.body.content } }, function(err, result) {
         });
 
         client.close();
