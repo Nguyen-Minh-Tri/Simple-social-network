@@ -341,7 +341,7 @@ header .highlight {
 	margin-bottom: 8px;
 }
 
-.edit-icon {
+#edit-icon {
 	float: right;
 	cursor: pointer;
 }
@@ -495,7 +495,7 @@ header .highlight {
 }
 
 #sttt {
-	width: 400px;
+	width: 40%;
 	height: 50px;
 	font-size: 20px;
 	margin-left: 94.52px;
@@ -503,7 +503,7 @@ header .highlight {
 }
 
 #stsubject {
-	width: 800px;
+	width: 80%;
 	height: 250px;
 	font-size: 20px;
 	margin-left: 50px;
