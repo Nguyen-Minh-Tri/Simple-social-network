@@ -1,7 +1,6 @@
 const API_URL = 'http://localhost:4000/posts';
 
 listAllPosts();
-editStatus();
 
 function on() {
 	document.getElementById('overlay').style.display = "flex";
@@ -27,7 +26,7 @@ function on() {
 		}).then(response => response.json())
 			.then(createdPost => {
 				form.reset();
-				listAllPosts();
+				// listAllPosts();
 			});
 	});
 
@@ -53,7 +52,8 @@ function listAllPosts() {
             console.log(posts);
             posts.reverse();
             posts.forEach(post => {
-                const div = document.createElement('div');
+				const div = document.createElement('div');
+				div.setAttribute('id', 'createdStatus');
 
                 const header = document.createElement('h3');
                 header.textContent = post.title;
@@ -70,50 +70,54 @@ function listAllPosts() {
 				img.setAttribute("height", "50");
 				
 
-				div.innerHTML = '<i class="fas fa-edit edit-icon" aria-hidden="true" onclick="editStatus()"></i>';
+				div.innerHTML = '<i class="fas fa-edit" id="edit-icon" aria-hidden="true" onclick="editStatus()"></i>';
 				div.appendChild(img);
 				div.appendChild(header);
 				div.appendChild(date);
                 div.appendChild(contents);
 				
-                newsElement.appendChild(div);
+				newsElement.appendChild(div);
             });
         })
 }
 
+
+
 function editStatus() {
 	const modal = document.getElementById('overlay');
 	const b1 = document.getElementById('submit-button');
-	const edit = document.getElementsByClassName('edit-icon');
+	const edit = document.getElementById('edit-icon');
+
+	document.getElementById('overlay').style.display = "flex";
+
+	const form = document.querySelector('form');
+	form.addEventListener('submit', (event) => {
+		event.preventDefault();
+
+		const formData = new FormData(form);
+		const title = formData.get('title');
+		const content = formData.get('content');
+		
+
+		const editedPost = {
+			title,
+			content
+		};
+
+		fetch('http://localhost:4000/edit', {
+			method: 'POST',
+			body: JSON.stringify(editedPost),
+			headers: {
+				'content-type': 'application/json'
+			}
+		}).then(response => response.json())
+			.then(updatedPost => {
+				form.reset();
+				// listAllPosts();
+			});
+	});
 
 	window.onclick = function(event) {
-		document.getElementById('overlay').style.display = "flex";
-
-		const form = document.querySelector('form');
-		form.addEventListener('submit', (event) => {
-			event.preventDefault();
-			const formData = new FormData(form);
-			const title = formData.get('title');
-			const content = formData.get('content');
-	
-			const post = {
-				title,
-				content
-			};
-			
-			fetch('http://localhost:4000/edit', {
-				method: 'PUT',
-				body: JSON.stringify(post),
-				headers: {
-					'content-type': 'application/json'
-				}
-			}).then(response => response.json())
-				.then(updatedPost => {
-					form.reset();
-					// listAllPosts();
-				});
-		});
-
 		if (event.target == modal) {
 			modal.style.display = "none";
 		}
@@ -123,20 +127,6 @@ function editStatus() {
 	}
 }
 
-
-// function off() {
-// 	document.getElementById("overlay").style.display = "none";
-// }
-
-// function submitButtonClicked() {
-// 	var tt = document.getElementById('sttt').value;
-// 	var subject = document.getElementById('stsubject').value;
-// 	document.getElementById('demo1').innerHTML = tt;
-// 	document.getElementById('demo2').innerHTML = subject;
-// 	if (tt != undefined || subject != undefined) {
-// 		document.getElementById('user-status').style.display = "block";
-// 	}
-// }
 
 
 

@@ -25,9 +25,7 @@
                 <textarea type="text" id="stsubject" name="content" placeholder="Write something.."></textarea>
             </div>
             <div class="clear"></div>
-            <div>
-                <button id="submit-button">Post</button>
-            </div>
+            <button id="submit-button" type="submit">Post</button>
         </form>
     </div>
 
@@ -75,7 +73,7 @@
                 <img src="pic/profile-pic.png" alt="Profile" width="75" height="75" id="profile-pic">
             </div>
             <div id="welcome">
-                <p class="lead mb-3">Welcome <%= user.name %></p>
+                <p>Welcome <%= user.name %>!</p>
                 <a href="#">Update your profile</a>
             </div>
         </div>
