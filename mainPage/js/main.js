@@ -1,126 +1,141 @@
-// const API_URL = 'http://localhost:4000/posts';
+const API_URL = 'http://localhost:4000/posts';
 
-// listAllPosts();
+listAllPosts();
 
-// function on() {
-// 	document.getElementById('overlay').style.display = "flex";
+function on() {
+	document.getElementById('overlay').style.display = "flex";
 
-// 	const form = document.querySelector('form');
-// 	form.addEventListener('submit', (event) => {
-// 		event.preventDefault();
-// 		const formData = new FormData(form);
-// 		const title = formData.get('title');
-// 		const content = formData.get('content');
+	const form = document.querySelector('form');
+	form.addEventListener('submit', (event) => {
+		event.preventDefault();
+		const formData = new FormData(form);
+		const title = formData.get('title');
+		const content = formData.get('content');
+		var id = title + content;
 
-// 		const post = {
-// 			title,
-// 			content
-// 		};
+		const post = {
+			title,
+			content,
+			id
+		};
 		
-// 		fetch(API_URL, {
-// 			method: 'POST',
-// 			body: JSON.stringify(post),
-// 			headers: {
-// 				'content-type': 'application/json'
-// 			}
-// 		}).then(response => response.json())
-// 			.then(createdPost => {
-// 				form.reset();
-// 				// listAllPosts();
-// 			});
-// 	});
+		fetch(API_URL, {
+			method: 'POST',
+			body: JSON.stringify(post),
+			headers: {
+				'content-type': 'application/json'
+			}
+		}).then(response => response.json())
+			.then(createdPost => {
+				form.reset();
+				listAllPosts();
+			});
+		
+	});
 
-// 	const modal = document.getElementById('overlay');
-// 	const b1 = document.getElementById('submit-button');
-// 	window.onclick = function(event) {
-// 		if (event.target == modal) {
-// 			modal.style.display = "none";
-// 		}
-// 		if (event.target == b1) {
-// 			modal.style.display = "none";
-// 		}
-//   }
-//   return true;
-// }
+	const modal = document.getElementById('overlay');
+	const b1 = document.getElementById('submit-button');
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+		if (event.target == b1) {
+			modal.style.display = "none";
+		}
+  }
+  return true;
+}
 
-// function listAllPosts() {
-// 	const newsElement = document.querySelector('.user-status');
-// 	newsElement.innerHTML = '';
-//     fetch(API_URL)
-//         .then(response => response.json())
-//         .then(posts => {
-//             console.log(posts);
-//             posts.reverse();
-//             posts.forEach(post => {
-//                 const div = document.createElement('div');
+function listAllPosts() {
+	const newsElement = document.querySelector('.user-status');
+	newsElement.innerHTML = '';
+    fetch(API_URL)
+        .then(response => response.json())
+        .then(posts => {
+            console.log(posts);
+            posts.reverse();
+            posts.forEach(post => {
+				const div = document.createElement('div');
+				div.setAttribute('id', 'createdStatus');
 
-//                 const header = document.createElement('h3');
-//                 header.textContent = post.title;
+                const header = document.createElement('h3');
+                header.textContent = post.title;
 
-//                 const contents = document.createElement('p');
-// 				contents.textContent= post.content;
+                const contents = document.createElement('p');
+				contents.textContent= post.content;
 
-//                 const date = document.createElement('small');
-// 				date.textContent = new Date(post.created);
+                const date = document.createElement('small');
+				date.textContent = new Date(post.created);
 				
-// 				const img = document.createElement("img");
-// 				img.src = "pic/profile-pic.png";
-// 				img.setAttribute("width", "50");
-// 				img.setAttribute("height", "50");
+				const img = document.createElement("img");
+				img.src = "pic/profile-pic.png";
+				img.setAttribute("width", "50");
+				img.setAttribute("height", "50");
+
+				const button = document.createElement('button');
+				button.innerHTML = '<i class="fas fa-edit"  aria-hidden="true"></i>';
+				button.setAttribute('class', 'edit-icon');
+				button.setAttribute('id', post.id);
+				const id = button.id;
+				button.setAttribute('onclick', 'editStatus(id)');
+
+				div.appendChild(button);
+				div.appendChild(img);
+				div.appendChild(header);
+				div.appendChild(date);
+                div.appendChild(contents);
 				
+				newsElement.appendChild(div);
 
-// 				div.innerHTML = '<i class="fas fa-edit edit-icon" aria-hidden="true" onclick="editStatus()"></i>';
-// 				div.appendChild(img);
-// 				div.appendChild(header);
-// 				div.appendChild(date);
-//                 div.appendChild(contents);
 				
-// 				newsElement.appendChild(div);
-//             });
-//         })
-// }
+            });
+		})
+}
 
-// function editStatus() {
-// 	const modal = document.getElementById('overlay');
-// 	const b1 = document.getElementById('submit-button');
-// 	const edit = document.getElementsByClassName('edit-icon');
 
-// 	document.getElementById('overlay').style.display = "flex";
+function editStatus(id) {
+	const modal = document.getElementById('overlay');
+	const b1 = document.getElementById('submit-button');
+	const edit = document.getElementById('edit-icon');
 
-// 	const form = document.querySelector('form');
-// 	form.addEventListener('submit', (event) => {
-// 		event.preventDefault();
-// 		const formData = new FormData(form);
-// 		const title = formData.get('title');
-// 		const content = formData.get('content');
+	document.getElementById('overlay').style.display = "flex";
 
-// 		const editedPost = {
-// 			title,
-// 			content
-// 		};
+	const form = document.querySelector('form');
+	form.addEventListener('submit', (event) => {
+		event.preventDefault();
 
-// 		fetch('http://localhost:4000/edit', {
-// 			method: 'POST',
-// 			body: JSON.stringify(editedPost),
-// 			headers: {
-// 				'content-type': 'application/json'
-// 			}
-// 		}).then(response => response.json())
-// 			.then(updatedPost => {
-// 				form.reset();
-// 				// listAllPosts();
-// 			});
-// 	});
+		const formData = new FormData(form);
+		const title = formData.get('title');
+		const content = formData.get('content'); 
 
-// 	window.onclick = function(event) {
-// 		if (event.target == modal) {
-// 			modal.style.display = "none";
-// 		}
-// 		if (event.target == b1) {
-// 			modal.style.display = "none";
-// 		}
-// 	}
-// }
+		const editedPost = {
+			title,
+			content,
+			id
+		};
+
+		fetch('http://localhost:4000/edit', {
+			method: 'POST',
+			body: JSON.stringify(editedPost),
+			headers: {
+				'content-type': 'application/json'
+			}
+		}).then(response => response.json())
+			.then(updatedPost => {
+				form.reset();
+				// listAllPosts();
+			});
+	});
+
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+		if (event.target == b1) {
+			modal.style.display = "none";
+		}
+	}
+};
 
 
 
