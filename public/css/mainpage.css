@@ -10,11 +10,11 @@
 
 .logout{
 	color: aliceblue;
-	padding-top: 1.5%;
-	padding-left: 90%;
-	margin-right: 50px;
+	top: 1.5%;
+	left: 86%;
+	margin-right: 500px;
 	position: absolute;
-	z-index: 99999999999;
+	z-index: 99999;
 }
 .clear {
 	clear: both;
@@ -41,6 +41,7 @@ header {
 	text-align: center;
 	margin: 10px;
 	padding: 0;
+	z-index: 9999999999999999;
 }
 
 #home-icon {
@@ -49,18 +50,29 @@ header {
 	width: 60.5px;
 	padding: 0;
 	margin: 0;
+	z-index: 9999999999999999;
 }
 
 #home-icon:hover {
   background-color: #0074b3; /* Add a hover color */
+  z-index: 9999999999999999;
+
 }
 
 .container {
 	display: inline-block;
 	text-align: center;
 	position: relative;
-	left: 10px;
 	bottom: 10px;
+}
+
+.container2 {
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	bottom: 10px;
+	z-index: 9999999999;
+	padding-left: 0%;
 }
 
 #searchbar {
@@ -69,6 +81,8 @@ header {
 	width: 350px;
 	height: 35px;
 	text-align: center;
+	padding-left: 0%;
+	z-index: 99999999999999;
 }
 
 .searchicon {
@@ -83,12 +97,14 @@ header {
 	text-transform: uppercase;
 	position: relative;
 	text-align: center;
-	left: 20%;
+	left: 10%;
+	z-index: 999999999999999999;
 }
 
 header .highlight {
 	color: #0099e6;
 	font-weight: bold;
+	z-index: 9999999999999999;
 }
 
 /* header */
@@ -157,11 +173,11 @@ header .highlight {
 	height: 200px;
 	background-color: #F0F8FF;
 	float: left;
-	margin-left: 166px;
+	margin-left: 168px;
+	
 }
 
-#top-background {
-}
+
 
 #profile {
 	position: absolute;
@@ -171,13 +187,27 @@ header .highlight {
 	border: solid 1px #FFFFF0;
 	height: 80px;
 	width: 80px;
-	background-color: #FFF8DC;
+	background-color: rgb(33, 33, 65);
+}
+
+.avataName{
+	font-size: small;
+	font-weight: 100;
+	color: white;
+	top: 20px;
+	margin-top: 20px;
+	position: center;
 }
 
 #profile-pic {
-	position: absolute;
-	bottom: 1px;
-	left: 2px;
+	position: relative;
+	top: 25px; /* 25% of parent */
+	font-size: 50px; /* 50% of parent */
+	line-height: 50px; /* 50% of parent */
+	color: #fff;
+	font-family: "Courier New", monospace;
+	font-weight: bold;
+
 }
 
 #welcome {
@@ -294,7 +324,7 @@ header .highlight {
 	left: 10px;
 	bottom: 10px;
 	margin-top: 30px;
-	margin-left: 30px;
+	margin-left: 20px;
 	width: 610px;
 	height: 100%;
 	background-color: #f3f6f8;

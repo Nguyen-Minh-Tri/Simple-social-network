@@ -42,10 +42,10 @@ function isValidPost(post) {
         post.content && post.content.toString().trim() !== '';
 }
 
-// app.use(rateLimit({
-//     windowMs: 30*1000, 
-//     max: 1
-// }));
+app.use(rateLimit({
+    windowMs: 30*1000, 
+    max: 1
+}));
 
 app.post('/posts', (req, res) => {
     if(isValidPost(req.body)) {

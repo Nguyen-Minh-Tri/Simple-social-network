@@ -71,7 +71,7 @@ app.post('/posts', (req, res) => {
 })
 
 app.post('/edit', (req, res) => {
-    MongoClient.connect(url, function(err, client) {
+    MongoClient.connect(url,{ useNewUrlParser: true },{ useUnifiedTopology: true }, function(err, client) {
         const db = client.db(dbName);
         const collection = db.collection('posts');
         
