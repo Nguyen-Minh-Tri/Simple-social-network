@@ -16,6 +16,8 @@ const db = monk('localhost/poststatus');
 const posts = db.get('posts');
 const filter = new Filter();
 
+const ObjectId = mongoose.Types.ObjectId;
+
 app.use(cors());
 app.use(express.json());
 
@@ -74,8 +76,10 @@ app.post('/edit', (req, res) => {
     MongoClient.connect(url,{ useNewUrlParser: true },{ useUnifiedTopology: true }, function(err, client) {
         const db = client.db(dbName);
         const collection = db.collection('posts');
+        var id = req.body.id;
+        var o_id = new ObjectId(id);
         
-        collection.updateOne({ id: req.body.id }
+        collection.updateOne({ _id: o_id }
             , { $set: { title: req.body.title, content : req.body.content } }, function(err, result) {
         });
 

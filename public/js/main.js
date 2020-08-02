@@ -11,12 +11,10 @@ function on() {
 		const formData = new FormData(form);
 		const title = formData.get('title');
 		const content = formData.get('content');
-		var id = title + content;
 
 		const post = {
 			title,
-			content,
-			id
+			content
 		};
 		
 		fetch(API_URL, {
@@ -75,7 +73,7 @@ function listAllPosts() {
 				const button = document.createElement('button');
 				button.innerHTML = '<i class="fas fa-edit"  aria-hidden="true"></i>';
 				button.setAttribute('class', 'edit-icon');
-				button.setAttribute('id', post.id);
+				button.setAttribute('id', post._id);
 				const id = button.id;
 				button.setAttribute('onclick', 'editStatus(id)');
 
@@ -125,7 +123,6 @@ function editStatus(id) {
 			form.reset();
 			// listAllPosts();
 		});
-		listAllPosts();
 	});
 
 	window.onclick = function(event) {
