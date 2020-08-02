@@ -119,10 +119,10 @@ function editStatus(id) {
 				'content-type': 'application/json'
 			}
 		}).then(response => response.json())
-			.then(updatedPost => {
-				form.reset();
-				listAllPosts();
-			});
+		.then(updatedPost => {
+			form.reset();
+			// listAllPosts();
+		});
 	});
 
 	window.onclick = function(event) {

@@ -13,9 +13,31 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    birthDay: {
+        year:{
+            type: String,
+            default: "0000"
+        },
+        month:{
+            type: String,
+            default: "00"
+        },
+        date:{
+            type: String,
+            default: "00"
+        }
+    },
     date: {
         type: Date,
         default: Date.now()
+    },
+    location:{
+        type: String,
+        default: "Required"
+    },
+    discription:{
+        type: String,
+        default: "Required"
     }
 });
 

@@ -13,8 +13,8 @@
 </head>
 
 <body>
-
-    <div id="overlay">
+    <a href="/main_page/logout" class="logout">Logout</a>
+    <!-- <div id="overlay">
         <form action="">
             <div class="input-form">
                 <p>Title</p>
@@ -29,18 +29,18 @@
                 <button id="submit-button">Post</button>
             </div>
         </form>
-    </div>
+    </div> -->
 
     <header>
-        <div id="home-icon">
-            <a href="#"><i class="fas fa-home icon"></i></a>
+        <div id="home-icon">    
+            <a href="http://localhost:5000/main_page"><i class="fas fa-home icon"></i></a>
         </div>
-        <div class="container">
+        <div class="container2">
             <i class="fas fa-search searchicon"></i>
             <input type="text" id="searchbar" name="searchbar" placeholder="Search">
         </div>
         <div class="tt">
-        	<h1><span class="highlight">LinkedIn</span> Platform</h1>
+        	<h1 href="http://localhost:5000/main_page"><span class="highlight">LinkedIn</span> Platform</h1>
         </div>
     </header>
 
@@ -69,14 +69,15 @@
     <aside id="profile-box">
         <div class="container">
             <div>
-                <img src="pic/top.jpg" alt="Top" width="250" height="50" id="top-background">
+                <img src="pic/top.jpg" alt="Top" width="248" height="50" id="top-background">
             </div>
             <div id="profile">
-                <img src="pic/profile-pic.png" alt="Profile" width="75" height="75" id="profile-pic">
+                <img src="#" alt="" width="75" height="75" id="profile-pic">
+                <span class="avataName"> <br><%= user.name %></span>
             </div>
             <div id="welcome">
-                <p>Welcome <%= user.name %>!</p>
-                <a href="#">Update your profile</a>
+                <p class="lead mb-3">Welcome - <%= user.name %> <br> Short Discription: <%= user.discription %> </p>
+                <a href="/main_page/profile">Update your profile</a>
             </div>
         </div>
     </aside>
@@ -85,9 +86,25 @@
         <div class="container">
             <div class="status-box">
                 <a href="#" onclick="on()"><i class="far fa-edit"> Start a post</i></a>
+                <div id="overlay">
+                    <form action="">
+                        <div class="input-form">
+                            <p>Title</p>
+                            <input type="text" name="title" placeholder="#" id="sttt">
+                        </div>
+                        <div class="input-form">
+                            <p>Subject</p>
+                            <textarea type="text" id="stsubject" name="content" placeholder="Write something.."></textarea>
+                        </div>
+                        <div class="clear"></div>
+                        <div>
+                            <button id="submit-button">Post</button>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="icon">
-                <a href="#"><i class="fas fa-camera"></i></a>
+                <a href="http://localhost:5001"><i class="fas fa-camera"></i></a>
             </div>
             <div class="icon">
                 <a href="#"><i class="fas fa-video"></i>

@@ -13,5 +13,10 @@ router.get('/main_page', ensureAuthenticated, (req, res) =>
     user: req.user
   })
 );
+router.get('/main_page/profile', ensureAuthenticated, (req, res) =>
+  res.render('profile', {
+    user: req.user
+  })
+);
 
 module.exports = router;

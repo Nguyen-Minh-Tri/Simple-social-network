@@ -15,18 +15,23 @@ app.use(express.static('public'));
 // Passport Config
 require('./config/passport')(passport);
 
-//mg db
-const db = require('./config/keys').MongoURI;
+/////////////////////
 
+/////////////////////
+
+//mg db
+const db = 'mongodb://localhost:27017/account';
+const db2 = 'mongodb://localhost:27017/mongouploads'
 // Connect to MongoDB
 mongoose
   .connect(
     db,
     { useNewUrlParser: true ,useUnifiedTopology: true}
   )
+  
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
-
+    
 
 // EJS
 // app.use(expressLayouts);
@@ -63,6 +68,7 @@ app.use(function(req, res, next) {
 app.use('/', require('./routes/index.js'));
 app.use('/user', require('./routes/user.js'));
 app.use('/main_page', require('./routes/main_page.js'));
+//
 
 const PORT = process.env.PORT || 5000;
 
